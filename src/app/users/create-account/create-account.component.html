@@ -1,0 +1,76 @@
+<div class="container mt-5">
+
+    <form  #createForm="ngForm" (ngSubmit)="createAccount(createForm)" autocomplete="off">
+               
+     <div class="row" *ngIf="authError">
+         <div class="col-12 alert alert-danger">{{ authError?.message }}</div>
+       </div> 
+
+       <div class="row mt-3">
+        <div class="col-3"></div>
+        <div class="col-md-6">
+           <div class="form-group">
+               Create Account
+           </div>
+       </div>
+        <div class="col-3"></div>
+    </div>
+       <div class="row mt-2">
+        <div class="col-3"></div>
+        <div class="col-md-6">
+           <div class="form-group">
+               <input type="text" name="name" #name="ngModel" ngModel  class="form-control" placeholder="Name">
+           </div>
+       </div>
+        <div class="col-3"></div>
+       </div>
+         <div class="row">
+             <div class="col-3"></div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" name="email" #email="ngModel" ngModel  class="form-control" placeholder="Email">
+                </div>
+            </div>
+             <div class="col-3"></div>
+         </div>
+         <div class="row">
+             <div class="col-3"></div>
+             <div class="col-6">
+                   <div class="form-group">
+                      <select name="type" #type="ngModel"  ngModel class="form-control">
+                        <option> -- Select User type --</option>  
+                        <option *ngFor="let role of roles" value="{{ role.name }}"> {{ role.name }} </option>
+                        </select>
+                        <!-- <div *ngIf="type.invalid && type.touched" class="validation-error"> This field is required </div> -->
+                    </div>
+               </div>
+            <div class="col-3"></div>
+         </div>
+         <div class="row">
+             <div class="col-3"></div>
+             <div class="col-md-6">
+                <div class="form-group">
+                    <input type="password" name="password" #password="ngModel" ngModel  class="form-control" placeholder="Password">
+                </div>
+            </div>
+            <div class="col-3"></div>
+         </div>
+         <div class="row mt-2">
+            <div class="col-3"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <button class="btn btn-block btn-info" id="submitBtn" type="submit">Create Account</button>
+                </div>
+            </div>
+            <div class="col-3"></div>
+         </div>
+    
+         <div class="row mb-2">
+            <div class="col-3"></div>
+            <div class="col-md-6">
+                    Are registered ? <a href="/login"> Login  </a>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </form>
+</div>

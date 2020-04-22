@@ -1,0 +1,60 @@
+ <div class="container">
+    <div class="row">
+        <div class="col-12"> <h3> DASHBOARD  </h3> </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-2">
+              My Profile 
+              <hr/>
+             {{ user?.displayName }}  
+             <br/>
+             {{ user?.email }} 
+             <br/>
+             <a routerLink="/edit">Edit</a>
+             <div *ngFor="let u of user_details">
+                 <!-- <p> {{ u.role }} </p> -->
+             </div>    
+        </div>
+        <div class="col-10">
+           <div *ngIf="supervisors?.length > 0; else noData" class="container">
+            <div class="row mt-3">
+                <div class="col-12">   
+                   <div>
+                       <table class="table table-stripped table-sm"  style="border: 1px solid #ddd; background: white;">
+                        <thead>
+                         <tr>
+                           <th>#</th> 
+                          <th> Name  </th> 
+                          <th> Email </th>
+                          <th> Role</th>
+                          <th> Action </th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                             <tr *ngFor="let u of supervisors;  let i = index">
+                               <td><span style="font-size: 13px;"> {{ i + 1 }} </span></td>
+                               <td>{{ u.name }}</td>
+                               <td> {{ u.email }} </td>
+                               <td> {{ u.role }} </td>
+                               <td> 
+                                 <a routerLink="agents/{{ u.uuid }}" class="btn btn-info btn-sm"> View Agent </a>
+                                 <button class="btn btn-danger btn-sm"> Delete </button>
+                              </td>
+                             </tr>
+                        </tbody>
+                        
+                       </table>
+                     
+                   </div> 
+                </div>
+            </div>
+         </div>
+         <ng-template #noData>
+            <p style="background: rgb(231, 240, 240); color: rgb(126, 119, 119); text-align: center; padding: 10px;">
+              No data available
+            </p>
+          </ng-template> 
+
+        </div>
+    </div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "food-delivery-d1adc": {
+      "hosting": {
+        "Yome": [
+          "food-delivery-d1adc"
+        ]
+      }
+    }
+  }
+}
